@@ -1,7 +1,7 @@
 import useSupabase from "./useSupabase";
 
 const useAuth = () => {
-  const user = useState('uesr', () => null)
+  const user = useState<any>('uesr', () => null)
   const { supabase }: {supabase: any} = useSupabase()
   const router = useRouter();
 
@@ -9,13 +9,16 @@ const useAuth = () => {
     user.value = session?.user || null
   })
 
-  const signUp = async ({email, password, ...metaData}: { email: string, password: string}) => {
+  const signUp = async ({email, password, ...metaData}: { email: string, password: string, metaData: Object }) => {
     const { user: userData, error} = await supabase.auth.signUp({ 
-      email, 
-      password 
-    }, {
-      data: metaData,
-      // redirectTo: `${window.location.origin}/profile?source=email`
+      email,
+      password,
+      options: {
+        data: {
+          ...metaData
+        },
+        // redirectTo: `${window.location.origin}/profile?source=email`
+      }
     })
     if (error) {
       throw error
@@ -39,18 +42,24 @@ const useAuth = () => {
     if (error) {
       throw error
     }
-    router.push('/');
+    router.push('/auth');
   }
 
   const isLoggedIn = () => {
     return !!user.value
   }
+
+  const userName = computed(() => {
+    return user.value?.user_metadata?.metaData?.name ?? ''
+  })
+  
   return {
     user,
     signUp,
     signIn,
     signOut,
-    isLoggedIn
+    isLoggedIn,
+    userName
   }
 };
 

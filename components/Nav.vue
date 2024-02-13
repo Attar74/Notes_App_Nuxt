@@ -5,7 +5,7 @@
       aria-label="Global"
     >
       <div class="flex lg:flex-1">
-        <NuxtLink to="/Home" class="text-lg font-semibold leading-6 text-gray-900 hover:underline">
+        <NuxtLink to="/" class="text-lg font-semibold leading-6 text-gray-900 hover:underline">
           <span class="sr-only">Your Company</span>
           <img
             class="h-[8rem] w-auto transform hover:scale-110 transition-all ease-linear duration-200"
@@ -14,7 +14,7 @@
           />
         </NuxtLink>
       </div>
-      <div class="lg:flex lg:flex-1 lg:justify-end" v-if="isLoggedIn()">
+      <div class="flex flex-1 justify-end" v-if="isLoggedIn()">
         <button
           @click="handlSignOut"
           class="text-2xl font-semibold leading-6 text-gray-900 hover:underline flex transform hover:scale-110 transition-all ease-linear duration-200"
@@ -27,9 +27,9 @@
           </svg>
         </button>
       </div>
-      <div class="hidden lg:flex lg:flex-1 lg:justify-end" v-else-if="path != '/'">
+      <div class="hidden lg:flex lg:flex-1 lg:justify-end" v-else-if="path != '/auth'">
         <NuxtLink
-          to="/"
+          to="/auth"
           class="text-2xl font-semibold leading-6 text-gray-900 hover:underline cursor-pointer flex transform hover:scale-110 transition-all ease-linear duration-200"
         >
           <p class="mr-2">
