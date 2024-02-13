@@ -37,11 +37,13 @@ import type { NotesForm } from '#build/components';
         <div class="h-[0.1rem] w-full bg-[#e5e7eb] my-[1rem]"></div>
       </ul>
     </div>
-		<button class="absolute -right-[10rem] bottom-0 hover:scale-110 transition-all duration-100 ease-linear border-4 border-blue-600 rounded-full p-[0.75rem]" @click="scrollTo(0)">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-blue-600">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
-      </svg>
-    </button>
+		<div class="flex justify-center mt-[1rem]">
+			<button class="xl:absolute xl:-right-[8rem] bottom-0 hover:scale-110 transition-all duration-100 ease-linear border-4 border-blue-600 rounded-full p-[0.75rem]" @click="scrollTo(0)">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-blue-600">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
+				</svg>
+			</button>
+		</div>
   </div>
 </template>
 
